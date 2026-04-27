@@ -8,10 +8,12 @@ export default function Logo() {
       <Image
         alt="heroKids-logo"
         src="/assets/logo.png"
-        width={70}
-        height={80}
+        width={55}
+        height={40}
       />
-      <h2 className="text-xl font-bold">Hero Kids</h2>
+      <h2 className="text-xl font-bold">
+        Hero <span className="text-primary">Kids</span>
+      </h2>
     </Link>
   );
 }
