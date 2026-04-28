@@ -21,12 +21,13 @@ export default function RootLayout({ children }) {
     >
       <body className="min-h-full flex flex-col">
         <header className="py-2 md:w-11/12 mx-auto">
-          <Navbar></Navbar>
+          <Navbar />
         </header>
-        <main className="py-2 md:w-11/12 mx-auto"></main>
-        {children}
 
-        <Footer></Footer>
+        {/* ✅ FIXED HERE */}
+        <main className="flex-1 py-2 md:w-11/12 mx-auto">{children}</main>
+
+        <Footer />
       </body>
     </html>
   );
