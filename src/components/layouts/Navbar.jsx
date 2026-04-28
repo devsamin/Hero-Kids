@@ -1,7 +1,26 @@
 import React from "react";
 import Logo from "./Logo";
+import Navlink from "../buttons/Navlink";
+import Link from "next/link";
+import { FiShoppingCart } from "react-icons/fi";
 
 export default function () {
+  const nav = (
+    <>
+      <li>
+        <Navlink href={"/"}>Home</Navlink>
+      </li>
+      <li>
+        <Navlink href={"/product"}>Products</Navlink>
+      </li>
+      <li>
+        <Navlink href={"/blog"}>Blog</Navlink>
+      </li>
+      <li>
+        <Navlink href={"/contact"}>Contact</Navlink>
+      </li>
+    </>
+  );
   return (
     <div>
       <div className="navbar bg-base-100 ">
@@ -28,53 +47,22 @@ export default function () {
               tabIndex="-1"
               className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
             >
-              <li>
-                <a>Item 1</a>
-              </li>
-              <li>
-                <a>Parent</a>
-                <ul className="p-2">
-                  <li>
-                    <a>Submenu 1</a>
-                  </li>
-                  <li>
-                    <a>Submenu 2</a>
-                  </li>
-                </ul>
-              </li>
-              <li>
-                <a>Item 3</a>
-              </li>
+              {nav}
             </ul>
           </div>
 
           <Logo></Logo>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">
-            <li>
-              <a>Item 1</a>
-            </li>
-            <li>
-              <details>
-                <summary>Parent</summary>
-                <ul className="p-2 bg-base-100 w-40 z-1">
-                  <li>
-                    <a>Submenu 1</a>
-                  </li>
-                  <li>
-                    <a>Submenu 2</a>
-                  </li>
-                </ul>
-              </details>
-            </li>
-            <li>
-              <a>Item 3</a>
-            </li>
-          </ul>
+          <ul className="menu menu-horizontal px-1">{nav}</ul>
         </div>
-        <div className="navbar-end">
-          <a className="btn">Button</a>
+        <div className="navbar-end space-x-4">
+          <Link className="btn btn-primary btn-outline" href={"/cart"}>
+            <FiShoppingCart></FiShoppingCart>
+          </Link>
+          <Link href={"/login"}>
+            <button className="btn btn-primary btn-outline">Login</button>
+          </Link>
         </div>
       </div>
     </div>
