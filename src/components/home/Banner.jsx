@@ -1,3 +1,4 @@
+import { BanglaFont } from "@/app/layout";
 import Image from "next/image";
 import React from "react";
 
@@ -6,7 +7,9 @@ export default function Banner() {
     <div className="flex flex-col md:flex-row items-center justify-between gap-10 py-10">
       {/* Left Content */}
       <div className="flex-1 space-y-4">
-        <h2 className="text-2xl md:text-4xl font-bold leading-tight">
+        <h2
+          className={` ${BanglaFont.className} text-3xl md:text-5xl font-bold leading-tight`}
+        >
           আপনার শিশুকে দিন একটি সুন্দর ভবিষ্যত
         </h2>
 
