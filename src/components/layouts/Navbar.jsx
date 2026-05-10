@@ -11,7 +11,7 @@ export default function () {
         <Navlink href={"/"}>Home</Navlink>
       </li>
       <li>
-        <Navlink href={"/product"}>Products</Navlink>
+        <Navlink href={"/products"}>Products</Navlink>
       </li>
       <li>
         <Navlink href={"/blog"}>Blog</Navlink>
