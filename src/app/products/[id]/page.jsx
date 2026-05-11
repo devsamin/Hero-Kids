@@ -1,9 +1,11 @@
-import Image from "next/image";
 import { getSingleProduct } from "@/actions/server/product";
+import Image from "next/image";
+
 import { FaStar, FaShoppingCart } from "react-icons/fa";
 
 export default async function ProductDetailsPage({ params }) {
-  const { id } = params;
+  const { id } = await params;
+  // console.log(id);
 
   const product = await getSingleProduct(id);
 
