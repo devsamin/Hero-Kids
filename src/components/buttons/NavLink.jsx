@@ -7,7 +7,7 @@ export default function Navlink({ href, children }) {
   const path = usePathname();
   return (
     <Link
-      className={`${path.startsWith(href) && "text-primary"} font-medium`}
+      className={`${path === href ? "text-primary" : ""} font-medium`}
       href={href}
     >
       {children}
