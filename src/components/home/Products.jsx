@@ -2,6 +2,7 @@ import React from "react";
 // import products from "@/data/toys.json";
 import ProductCard from "../cards/ProductCard";
 import { getProducts } from "@/actions/server/product";
+export const dynamic = "force-dynamic";
 
 export default async function Products() {
   const products = await getProducts();
