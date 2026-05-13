@@ -1,21 +1,33 @@
-import { dbConnect, collactions } from "@/lib/dbConnect";
+import { dbConnect, collections } from "@/lib/dbConnect";
 import { ObjectId } from "mongodb";
 
+// 🔥 get all products
 export const getProducts = async () => {
-  const product = await dbConnect(collactions.PRODUCT).find().toArray();
+  try {
+    const collection = await dbConnect(collections.PRODUCT);
+    const products = await collection.find({}).toArray();
 
-  return product;
+    return products;
+  } catch (error) {
+    console.error("❌ getProducts error:", error);
+    return [];
+  }
 };
 
+// 🔥 get single product
 export const getSingleProduct = async (id) => {
-  // ✅ safe check first
-  if (!id || !ObjectId.isValid(id)) {
+  try {
+    if (!id || !ObjectId.isValid(id)) return null;
+
+    const collection = await dbConnect(collections.PRODUCT);
+
+    const product = await collection.findOne({
+      _id: new ObjectId(id),
+    });
+
+    return product || null;
+  } catch (error) {
+    console.error("❌ getSingleProduct error:", error);
     return null;
   }
-
-  const product = await dbConnect(collactions.PRODUCT).findOne({
-    _id: new ObjectId(id),
-  });
-
-  return product || null;
 };
