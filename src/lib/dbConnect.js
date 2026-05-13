@@ -12,6 +12,7 @@ const client = new MongoClient(uri, {
     deprecationErrors: true,
   },
 });
-export const dbConnect = (cname) => {
+export const dbConnect = async (cname) => {
+  await client.connect();
   return client.db(dbname).collection(cname);
 };
