@@ -1,8 +1,35 @@
-import { getSingleProduct } from "@/actions/server/product";
 import Image from "next/image";
 
 import { FaStar, FaShoppingCart } from "react-icons/fa";
 export const dynamic = "force-dynamic";
+
+import { getSingleProduct } from "@/actions/server/product";
+
+export async function generateMetadata({ params }) {
+  const product = await getSingleProduct(params.id);
+
+  if (!product) {
+    return {
+      title: "Product Not Found",
+    };
+  }
+
+  return {
+    title: product.title,
+    description: product.description?.slice(0, 150),
+
+    openGraph: {
+      title: product.title,
+      description: product.description,
+      images: [
+        {
+          url: product.image,
+        },
+      ],
+    },
+  };
+}
+
 export default async function ProductDetailsPage({ params }) {
   const { id } = await params;
   // console.log(id);

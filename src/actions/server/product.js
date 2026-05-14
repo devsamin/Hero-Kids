@@ -7,7 +7,7 @@ export const getProducts = async () => {
     const collection = await dbConnect(collections.PRODUCT);
     const data = await collection.find({}).toArray();
 
-    console.log("🔥 PRODUCTS:", data);
+    // console.log("🔥 PRODUCTS:", data);
     return await collection.find({}).toArray();
   } catch (error) {
     console.error("getProducts error:", error);
