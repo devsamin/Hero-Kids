@@ -4,6 +4,7 @@ import { FaStar, FaShoppingCart } from "react-icons/fa";
 export const dynamic = "force-dynamic";
 
 import { getSingleProduct } from "@/actions/server/product";
+import CurtButton from "@/components/buttons/CurtButton";
 
 export async function generateMetadata({ params }) {
   const product = await getSingleProduct(params.id);
@@ -96,10 +97,7 @@ export default async function ProductDetailsPage({ params }) {
           </ul>
 
           {/* Button */}
-          <button className="btn btn-primary w-full mt-4">
-            <FaShoppingCart />
-            Add to Cart
-          </button>
+          <CurtButton product={product}></CurtButton>
         </div>
       </div>
 
