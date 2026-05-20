@@ -2,17 +2,25 @@
 
 import { useState } from "react";
 import SocialLogin from "./SocialLogin";
+import { postUser } from "@/actions/server/auth";
+import { useRouter } from "next/navigation";
 
 export default function RegisterForm() {
+  const router = useRouter();
   const [form, setForm] = useState({
     username: "",
     email: "",
     password: "",
   });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(form);
+    const result = await postUser(form);
+    if (result.acknowledged) {
+      alert("User created successfully!");
+      router.push("/login");
+    }
   };
 
   return (

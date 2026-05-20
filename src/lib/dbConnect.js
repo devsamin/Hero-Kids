@@ -28,6 +28,7 @@ clientPromise = global._mongoClientPromise;
 // ✅ spelling fixed
 export const collections = {
   PRODUCT: "products",
+  USER: "users",
 };
 
 // ✅ correct db connect
