@@ -1,11 +1,19 @@
 "use client";
-
+import { useState } from "react";
 import { signIn } from "next-auth/react";
 import SocialLogin from "./SocialLogin";
 
 export default function LoginForm() {
+  const [form, setForm] = useState({
+    email: "",
+    password: "",
+  });
+  const handleChange = (e) => {
+    setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
   const handleSubmit = async (e) => {
     e.preventDefault();
+    signIn("credentials", { form, redirect: false });
   };
 
   return (
@@ -18,6 +26,8 @@ export default function LoginForm() {
             type="email"
             name="email"
             placeholder="Email"
+            value={form.email}
+            onChange={handleChange}
             className="w-full px-4 py-3 border border-gray-300 rounded-lg outline-none focus:ring-2 focus:ring-orange-400 focus:border-orange-400 transition"
           />
 
